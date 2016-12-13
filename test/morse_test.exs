@@ -1,7 +1,13 @@
 defmodule MorseTest do
   use ExUnit.Case
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  test "encodes simple string" do
+    expected = ".... . .-.. .-.. ---"
+    assert Morse.encode("Hello") == expected
+  end
+
+  test "encodes complex string" do
+    expected = ".--- ..-- .-.- --.--"
+    assert Morse.encode("Jüäñ") == expected
   end
 end
