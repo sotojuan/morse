@@ -57,7 +57,7 @@ defmodule Morse do
     "@" => ".--.-.",
     " " => "......"
   }
-  @from_morse Enum.map(@to_morse, fn({k, v}) -> {v, k} end)
+  @from_morse @to_morse |> Enum.map(fn({k, v}) -> {v, k} end) |> Enum.into(%{})
 
   def encode(string) do
     string
@@ -65,5 +65,12 @@ defmodule Morse do
     |> Stream.map(&String.upcase/1)
     |> Stream.map(fn(c) -> @to_morse[c] || "?" end)
     |> Enum.join(" ")
+  end
+
+  def decode(string) do
+    string
+    |> String.split(" ")
+    |> Enum.map(fn(c) -> @from_morse[c] || "?" end)
+    |> Enum.join("")
   end
 end

@@ -10,4 +10,14 @@ defmodule MorseTest do
     expected = ".--- ..-- .-.- --.--"
     assert Morse.encode("Jüäñ") == expected
   end
+
+  test "decodes simple string" do
+    expected = "HELLO"
+    assert Morse.decode(".... . .-.. .-.. ---") == expected
+  end
+
+  test "decodes complex string" do
+    expected = "JÜÄÑ"
+    assert Morse.decode(".--- ..-- .-.- --.--") == expected
+  end
 end
