@@ -1,5 +1,7 @@
 defmodule Morse do
-  @moduledoc false
+  @moduledoc """
+  Encodes English into Morse code and decodes Morse code into English.
+  """
 
   @to_morse %{
     "A" => ".-",
