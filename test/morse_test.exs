@@ -1,5 +1,6 @@
 defmodule MorseTest do
   use ExUnit.Case
+  doctest Morse
 
   test "encodes simple string" do
     expected = ".... . .-.. .-.. ---"

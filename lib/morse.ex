@@ -59,6 +59,16 @@ defmodule Morse do
   }
   @from_morse @to_morse |> Enum.map(fn({k, v}) -> {v, k} end) |> Enum.into(%{})
 
+  @doc """
+  Encodes the given string to Morse code. Spaces are preserved and all characters are uppercased before encoding.
+
+  Characters outside the Morse scope become `?`.
+
+  ## Examples
+
+      iex> Morse.encode("This is a doctest")
+      "- .... .. ... ...... .. ... ...... .- ...... -.. --- -.-. - . ... -"
+  """
   def encode(string) do
     string
     |> String.codepoints
@@ -67,6 +77,14 @@ defmodule Morse do
     |> Enum.join(" ")
   end
 
+  @doc """
+  Decodes the given Morse string back to English. Spaces and `?` are preserved.
+
+  ## Examples
+
+      iex> Morse.decode("-... .- -. .- -. .-")
+      "BANANA"
+  """
   def decode(string) do
     string
     |> String.split(" ")
