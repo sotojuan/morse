@@ -11,7 +11,7 @@ In your `mix.exs`:
 ```elixir
 defp deps do
   [
-    {:morse, "~> 1.0.0"}
+    {:morse, "~> 1.0.1"}
   ]
 end
 ```
