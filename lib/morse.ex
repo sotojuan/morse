@@ -71,7 +71,7 @@ defmodule Morse do
       iex> Morse.encode("This is a doctest")
       "- .... .. ... ...... .. ... ...... .- ...... -.. --- -.-. - . ... -"
   """
-  def encode(string) do
+  def encode(string) when is_binary(string) do
     string
     |> String.codepoints
     |> Stream.map(&String.upcase/1)
@@ -87,7 +87,7 @@ defmodule Morse do
       iex> Morse.decode("-... .- -. .- -. .-")
       "BANANA"
   """
-  def decode(string) do
+  def decode(string) when is_binary(string) do
     string
     |> String.split(" ")
     |> Enum.map(fn(c) -> @from_morse[c] || "?" end)
