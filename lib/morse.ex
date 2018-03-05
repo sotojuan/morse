@@ -54,12 +54,12 @@ defmodule Morse do
     "/" => "-..-.",
     "-" => "-....-",
     "'" => ".----.",
-    "(" =>:"'-.--.-",
+    "(" => :"'-.--.-",
     "_" => "..--.-",
     "@" => ".--.-.",
     " " => "......"
   }
-  @from_morse @to_morse |> Enum.map(fn({k, v}) -> {v, k} end) |> Enum.into(%{})
+  @from_morse @to_morse |> Enum.map(fn {k, v} -> {v, k} end) |> Enum.into(%{})
 
   @doc """
   Encodes the given string to Morse code. Spaces are preserved and all characters are uppercased before encoding.
@@ -73,9 +73,9 @@ defmodule Morse do
   """
   def encode(string) when is_binary(string) do
     string
-    |> String.codepoints
+    |> String.codepoints()
     |> Stream.map(&String.upcase/1)
-    |> Stream.map(fn(c) -> @to_morse[c] || "?" end)
+    |> Stream.map(fn c -> @to_morse[c] || "?" end)
     |> Enum.join(" ")
   end
 
@@ -90,7 +90,7 @@ defmodule Morse do
   def decode(string) when is_binary(string) do
     string
     |> String.split(" ")
-    |> Enum.map(fn(c) -> @from_morse[c] || "?" end)
+    |> Enum.map(fn c -> @from_morse[c] || "?" end)
     |> Enum.join("")
   end
 end
